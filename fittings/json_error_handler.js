@@ -33,7 +33,7 @@ module.exports = function create(fittingDef, bagpipes) {
       if (context.statusCode === 500 && !fittingDef.handle500Errors) { return next(err); }
       //else - from here we commit to emitting error as JSON, no matter what.
 
-      context.headers['Content-Type'] = 'application/json';
+      context.headers['Content-Type'] = 'application/json; charset=utf-8';
       Object.defineProperty(err, 'message', { enumerable: true }); // include message property in response
       if (fittingDef.includeErrStack)
           Object.defineProperty(err, 'stack', { enumerable: true }); // include stack property in response
